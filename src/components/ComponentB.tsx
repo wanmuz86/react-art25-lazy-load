@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const ComponentB = () => {
-  throw new Error("Something is wrong ... ")
 
   const [message, setMessage] = useState('');
   const handleButtonClick = () => {

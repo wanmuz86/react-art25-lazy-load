@@ -34,7 +34,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps,ErrorBou
         return this.props.children;
   }
 
-  // This also will be executed wheneer there is an error
+  // This also will be executed whenever there is an error
   // derived state means - variable that depends on the other state
   // Updating my state to true
   static getDerivedStateFromError():ErrorBoundaryState {
