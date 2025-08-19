@@ -1,34 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import React, { Suspense } from 'react'
+
+// dynamic load a component
+// LazyLoad the Component
+const ComponentA = React.lazy(() => import('./components/ComponentA'))
+const ComponentB = React.lazy(() => import('./components/ComponentB'))
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>React Lazy Loading</h1>
+      {/* It needs to be loaded within a <Suspense> compoenent
+  a fallback component when the component is not loaded yet      */}
+      <Suspense fallback={<div><p>Loading Component A</p></div>}>
+        <ComponentA />
+      </Suspense >
+      <Suspense fallback={<div><p>Loading Component B</p></div>}>
+        <ComponentB />
+      </Suspense>
+    </div>
   )
 }
 
