@@ -1,5 +1,6 @@
 import './App.css'
 import React, { Suspense } from 'react'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // dynamic load a component
 // LazyLoad the Component
@@ -14,12 +15,19 @@ function App() {
       <h1>React Lazy Loading</h1>
       {/* The <Suspense> is a fallback when the component is not loaded yet
         If it is not within a suspense, it will be empty while loading    */}
+        <ErrorBoundary>
       <Suspense fallback={<div><p>Loading Component A</p></div>}>
         <ComponentA />
+        <ComponentA />
+        <ComponentA />
       </Suspense >
+      </ErrorBoundary>
+      <ErrorBoundary>
       <Suspense fallback={<div><p>Loading Component B</p></div>}>
         <ComponentB />
       </Suspense>
+      </ErrorBoundary>
+      
     </div>
   )
 }
