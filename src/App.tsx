@@ -12,8 +12,8 @@ function App() {
   return (
     <div>
       <h1>React Lazy Loading</h1>
-      {/* It needs to be loaded within a <Suspense> compoenent
-  a fallback component when the component is not loaded yet      */}
+      {/* The <Suspense> is a fallback when the component is not loaded yet
+        If it is not within a suspense, it will be empty while loading    */}
       <Suspense fallback={<div><p>Loading Component A</p></div>}>
         <ComponentA />
       </Suspense >
